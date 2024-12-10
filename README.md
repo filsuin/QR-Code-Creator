@@ -1,47 +1,65 @@
 # Générateur de QR Code Personnalisé
 
-Ce projet permet de générer des QR codes personnalisés à partir d'un lien fourni par l'utilisateur. L'utilisateur peut choisir la couleur des pixels, la couleur de fond et même utiliser un sélecteur de couleur pour plus de flexibilité. Le QR code généré peut être enregistré dans un fichier image au format PNG.
+Ce projet est un générateur de QR codes basé sur une interface web. Il permet aux utilisateurs de créer des QR codes à partir d'un lien et de personnaliser leur couleur. L'application fonctionne localement avec Flask.
 
 ## Fonctionnalités
 
-- Générer un QR code à partir d'un lien.
-- Personnaliser la couleur des pixels et de l'arrière-plan.
-- Utiliser un sélecteur de couleur pour choisir les couleurs facilement.
-- Interface graphique conviviale avec Tkinter.
+- Génération de QR codes à partir d'un lien fourni.
+- Personnalisation de la couleur des pixels via un sélecteur de couleur.
+- Interface web moderne avec des boutons arrondis et un design épuré.
+- Téléchargement direct du QR code au format PNG.
 
 ## Prérequis
 
-Avant de pouvoir exécuter ce projet, vous devez avoir installé les bibliothèques suivantes :
+Avant de lancer le projet, assurez-vous d'avoir Python installé ainsi que les bibliothèques suivantes :
 
-- `qrcode` pour la génération du QR code.
-- `Pillow` (PIL) pour la gestion des images.
-- `tkinter` pour l'interface graphique.
+- Flask
+- qrcode[pil]
 
-Vous pouvez installer ces dépendances avec la commande suivante :
+Installez-les avec la commande suivante :
 
 ```bash
-pip install qrcode[pil] Pillow
+pip install Flask qrcode[pil]
 ```
+
 ## Installation
 
-1. Clonez ou téléchargez ce repository sur votre machine locale :
-```bash
-git clone https://github.com/yourusername/qr-code-generator.git
-cd qr-code-generator
-```
-2. Assurez-vous d'avoir installé toutes les dépendances requises, comme mentionné ci-dessus.
+1. Clonez ce repository sur votre machine locale :
+   ```bash
+   git clone https://github.com/yourusername/qr-code-generator.git
+   cd qr-code-generator
+   ```
+
+2. Assurez-vous que toutes les dépendances sont installées (voir la section Prérequis).
 
 ## Utilisation
 
-1. Ouvrez le terminal ou l'invite de commande et exécutez le script Python :
-```bash
-python qr_code_generator.py
+1. Lancez le serveur Flask :
+   ```bash
+   python app.py
+   ```
+
+2. Ouvrez un navigateur et accédez à `http://127.0.0.1:5000/`.
+
+3. Étapes pour générer un QR code :
+   - Entrez l'URL dans le champ prévu à cet effet.
+   - Choisissez une couleur pour le QR code à l'aide du sélecteur.
+   - Cliquez sur "Générer QR Code".
+   - Téléchargez l'image générée au format PNG.
+
+## Structure du projet
+
+- `app.py` : Script principal contenant l'application Flask.
+- `templates/index.html` : Fichier HTML pour l'interface utilisateur.
+- `static/` : Dossier pour les fichiers CSS et JS (si ajoutés ultérieurement).
+
+## Améliorations futures
+
+- Support de la personnalisation de la taille des QR codes.
+- Ajout d'options pour inclure des logos au centre des QR codes.
+- Hébergement de l'application sur une plateforme web (ex. Heroku).
+
+---
+
+Contribuez ou signalez des problèmes via des pull requests ou des issues sur GitHub.
 ```
-2. Une interface graphique s'ouvrira. Voici les étapes :
-
-- Entrez un lien dans le champ prévu à cet effet.
-- Sélectionnez la couleur des pixels (par exemple, noir, rouge, etc.).
-- Sélectionnez la couleur de fond (par exemple, blanc, jaune, etc.).
-- Cliquez sur le bouton Générer le QR Code pour créer le QR code personnalisé.
-
-3. Le QR code généré sera enregistré sous le nom `qr_code_personnalise.png` dans le répertoire courant.
