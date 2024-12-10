@@ -8,11 +8,22 @@ app = Flask(__name__)
 def index():
     if request.method == "POST":
         url = request.form["url"]
-        color = request.form["color"]
-        qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
+        color = request.form["color"].lstrip("#")  # Supprime le # pour traiter la couleur
+        
+        # Génération du QR code
+        qr = qrcode.QRCode(
+            version=1, 
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4
+        )
         qr.add_data(url)
         qr.make(fit=True)
-        img = qr.make_image(fill=color, back_color="white")
+        
+        # Convertir la couleur en tuple RGB
+        rgb_color = tuple(int(color[i:i+2], 16) for i in (0, 2, 4))
+        
+        img = qr.make_image(fill_color=rgb_color, back_color="white")
         
         # Sauvegarder l'image dans un buffer pour l'envoyer
         img_io = BytesIO()
