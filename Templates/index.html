@@ -1,40 +1,64 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Générateur de QR Code</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>QR Code Generator</title>
     <style>
         body {
-            background-color: #f4f7fa;
-            padding: 30px;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
         }
-        .container {
-            background-color: #fff;
-            padding: 30px;
+        form {
+            background: #ffffff;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        .btn-custom {
-            border-radius: 50px;
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #4caf50;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2 class="text-center mb-4">Générateur de QR Code</h2>
-        <form method="POST" action="/">
-            <div class="mb-3">
-                <label for="url" class="form-label">URL :</label>
-                <input type="text" class="form-control" id="url" name="url" required>
-            </div>
-            <div class="mb-3">
-                <label for="color" class="form-label">Couleur du QR Code :</label>
-                <input type="color" class="form-control" id="color" name="color" value="#0000ff">
-            </div>
-            <button type="submit" class="btn btn-custom btn-primary btn-lg w-100">Générer QR Code</button>
-        </form>
-    </div>
+    <form method="POST">
+        <label for="url">URL :</label>
+        <input type="text" id="url" name="url" required>
+        
+        <label for="color">Couleur :</label>
+        <input type="color" id="color" name="color" value="#000000">
+        
+        <label for="size">Taille :</label>
+        <input type="number" id="size" name="size" value="10" min="1" max="40">
+        
+        <button type="submit">Générer QR Code</button>
+    </form>
 </body>
 </html>
